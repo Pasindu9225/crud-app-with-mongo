@@ -1,14 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const Router = express.Router();
 
-const {
-  createProduct,
-  getProducts,
-  getProductbyID,
-  updateProduct,
-  deleteProduct,
-} = require("./controls/crudControls.js");
+const productRouter = require("./product routers/product.rout.js");
 
 const app = express();
 app.use(express.json());
@@ -23,11 +16,7 @@ app.get("/", (req, res) => {
   res.send("hello world 2");
 });
 
-app.post("/products/addproduct", createProduct);
-app.get("/products", getProducts);
-app.get("/products/:id", getProductbyID);
-app.put("/products/:id", updateProduct);
-app.delete("/products/:id", deleteProduct);
+app.use("/products", productRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
