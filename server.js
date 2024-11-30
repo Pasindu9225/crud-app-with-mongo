@@ -6,6 +6,10 @@ const productRouter = require("./product routers/product.rout.js");
 const app = express();
 app.use(express.json());
 
+// Import and use cors middleware
+const cors = require("cors");
+app.use(cors()); // This allows all incoming requests by default
+
 const connectDB = require("./db.js");
 
 dotenv.config();
