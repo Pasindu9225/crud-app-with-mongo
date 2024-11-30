@@ -2,6 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 
 const productRouter = require("./routs/product routers/product.rout.js");
+const authRouter = require("./routs/auth routs/authRoutes.js");
+const userRouter = require("./routs/user routers/userRoutes.js");
 
 const app = express();
 app.use(express.json());
@@ -20,6 +22,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", productRouter);
+app.use("/auth", authRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
